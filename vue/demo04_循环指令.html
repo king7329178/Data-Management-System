@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="container">
+    <!-- 将myList中的元素 显示在一个无序列表中--> 
+    <ul>
+        <li>{{myList[0]}}</li>
+        <li>{{myList[1]}}</li>
+        <li>{{myList[2]}}</li>
+        <li>{{myList[3]}}</li>
+        <li>{{myList[4]}}</li>
+    </ul>
+
+    <!-- Vue提供了一个循环的指令： v-for -->
+    <ul>
+        <li v-for="(tmp,index) in myList">
+            {{tmp}}
+        </li>
+    </ul>
+
+    <!-- v-for第二种语法：可以取到临时变量对应的index-->
+    <p v-for="(value,key) in car">
+        {{"key is "+key+" value is "+value}}
+    </p>
+
+    <p v-for="(value,key) in  myList">
+        {{"key is "+key+" value is "+value}}
+    </p>
+
+</div>
+
+<script>
+    new Vue({
+        el:'#container',
+        data:{
+            myList:[100,200,300,400,500],
+            car:{
+                brand:'BMW',
+                price:20
+            }
+        }
+    })
+</script>
+
+
+</body>
+</html>

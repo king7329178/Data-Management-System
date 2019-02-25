@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+    <style>
+        .myRed{
+            color:red
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <p>{{msg}}</p>
+    <!-- v-bind实现将变量中值 绑定到属性-->
+    <img v-bind:src="'img/'+imgUrl"
+         style="width:80px;height:80px"
+         alt=""/>
+    <a v-bind:href="myLink">tarena</a>
+    <a :href="myLink">tarena</a>
+
+    <button @click="modifyBGColor">修改背景色</button>
+    <h1 v-bind:style="{backgroundColor:myBGColor}">
+        背景色会被修改
+    </h1>
+
+    <p v-bind:class="{myRed:isRed}">我的字体颜色会变化</p>
+
+    <button v-bind:disabled="!isValid">clickMe</button>
+
+    <button v-show="hasMore">加载更多</button>
+    <p v-show="!hasMore">没有跟多数据可以加载了</p>
+
+    <div v-html="myHtml">it is a test</div>
+</div>
+
+<script>
+    new Vue({
+        el: '#container',
+        data: {
+            msg: 'Hello Vue',
+            imgUrl:'1.jpg',
+            myLink:'http://www.baidu.com',
+            myBGColor:'#ff0000',
+            isRed:false,
+            isValid:false,
+            hasMore:true,
+            myHtml:'<h1>it is a header</h1>'
+        },
+        methods:{
+            modifyBGColor: function () {
+                this.myBGColor = '#0000ff'
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

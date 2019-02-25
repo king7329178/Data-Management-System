@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="container">
+
+    <table>
+        <thead>
+        <tr>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>年龄</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr v-for="tmp in stuList">
+                <td v-for="value in tmp">
+                    {{value}}
+                </td>
+                <td>{{tmp.name}}</td>
+                <td>{{tmp.sex}}</td>
+                <td>{{tmp.age}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    new Vue({
+        el:'#container',
+        data:{
+            stuList:[
+                {name:'michael',sex:1,age:20},
+                {name:'miller',sex:1,age:21},
+                {name:'lincoln',sex:0,age:23},
+                {name:'lucy',sex:1,age:22},
+                {name:'hanmeimei',sex:0,age:19}
+            ]
+        }
+    })
+</script>
+
+
+</body>
+</html>

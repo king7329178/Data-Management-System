@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="container">
+    <!-- 调用组件-->
+    <my-component></my-component>
+</div>
+
+<script>
+    //创建一个组件
+    Vue.component('my-component',{
+        data: function () {
+            return {
+                myAddress:'',
+                myPhone:123
+            }
+        },
+        template:`
+            <div>
+                <input type="text" v-model="myAddress"/>
+                <input type="text" v-model="myPhone"/>
+                <p>{{myAddress}}</p>
+            </div>
+        `,
+        watch:{
+            myAddress: function () {
+                //当数据发生变化时，执行的操作
+                console.log('data has changed');
+            },
+            myPhone: function () {
+                console.log(this.myPhone);
+            }
+        }
+    })
+
+    new Vue({
+        el: '#container',
+        data: {
+            msg: 'Hello Vue'
+        }
+    })
+</script>
+
+</body>
+</html>

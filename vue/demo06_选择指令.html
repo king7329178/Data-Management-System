@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="container">
+    <p>{{msg}}</p>
+    <p v-if="isMember">仅会员可见</p>
+
+    <p v-if="answer=='a'">A</p>
+    <p v-else-if="answer == 'b'">B</p>
+    <p v-else-if="answer == 'c'">C</p>
+    <p v-else>D</p>
+
+</div>
+
+<script>
+    new Vue({
+        el:'#container',
+        data:{
+            msg:'Hello Vue',
+            isMember:true,
+            answer:'c'
+        },
+        created: function () {
+            console.log('Vue的实例创建完毕');
+        }
+    })
+</script>
+
+</body>
+</html>

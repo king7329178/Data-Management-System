@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="container">
+    <my-component></my-component>
+</div>
+
+<script>
+
+    Vue.component('my-component',{
+        data: function () {
+            return {
+                opacityValue:0
+            }
+        },
+        template:' <h1 v-bind:style="{opacity:opacityValue}"> 我的透明度会变化 </h1>',
+        mounted: function () {
+            //启动定时器，不断修改opacityValue
+            setInterval(
+                     ()=> {
+                        this.opacityValue+=0.1;
+                        if(this.opacityValue > 1)
+                        {
+                            this.opacityValue=0;
+                        }
+                    },
+                    200
+            )
+        }
+    })
+
+    new Vue({
+        el: '#container',
+        data: {
+            msg: 'Hello Vue'
+        }
+    })
+</script>
+
+</body>
+</html>

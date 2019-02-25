@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="container">
+    <p>{{msg}}</p>
+    <h1>{{price}}</h1>
+    <h1>{{price | myCurrency('￥')}}</h1>
+</div>
+
+<script>
+    // filter
+    new Vue({
+        el: '#container',
+        data: {
+            msg: 'Hello Vue',
+            price:356
+        },
+        //过滤器的本质 就是一个有参数有返回值的方法
+        filters:{
+            myCurrency:function(myInput,arg1){
+                console.log(arg1);
+                //根据业务需要，对传来的数据进行处理
+                // 并返回处理后的结果
+                var result = arg1+myInput;
+                return result;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

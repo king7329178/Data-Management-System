@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="container">
+    <p>{{msg}}</p>
+    <button v-on:click="handleClick">clickMe</button>
+    <button @click="handleClick">clickMe</button>
+
+    <select v-on:change="handleChange">
+        <option value="red">红色</option>
+        <option value="green">绿色</option>
+        <option value="blue">蓝色</option>
+    </select>
+
+
+    <form v-on:submit.prevent="handleSubmit">
+        <input type="checkbox"/>是否同意本站协议
+        <br/>
+        <button>登录</button>
+    </form>
+
+</div>
+
+<script>
+    new Vue({
+        el: '#container',
+        data: {
+            msg: 'Hello Vue',
+			selected:''
+        },
+//       通过methods来定义需要用到的方法
+        methods:{
+            handleClick: function () {
+                console.log('btn is clicked');
+            },
+            handleChange:function(event){
+				console.log('选择了某个选项: '+event.target.value);
+            },
+            handleSubmit: function () {
+                console.log('提交事件被触发了');
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

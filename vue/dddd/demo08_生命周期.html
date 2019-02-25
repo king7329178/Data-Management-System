@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+</head>
+<body>
+
+<div id="container">
+    <!-- 组件的使用-->
+    <button @click="isShow = !isShow">切换组件是否显示</button>
+    <my-component v-if="isShow"></my-component>
+</div>
+
+<script>
+    //组件的创建
+    Vue.component('my-component',{
+        template:`<div>
+            <button @click="handleClick">clickMe</button>
+            <h1> Hello Lifecycle {{count}} </h1>
+        </div>`,
+        data:function(){
+            return {
+                count:0
+            }
+        },
+        methods:{
+            handleClick: function () {
+                this.count++;
+            }
+        },
+        beforeCreate: function () {
+            console.log('准备创建组件');
+        },
+        created: function () {
+            console.log('组件创建完毕');
+        },
+        beforeMount: function () {
+            console.log('组件的模板准备挂载到DOM');
+        },
+        mounted: function () {
+            console.log('挂载完毕');
+        },
+        beforeUpdate: function () {
+            console.log('准备更新了');
+        },
+        updated:function(){
+            console.log('更新完成');
+        },
+        beforeDestroy: function () {
+            console.log('准备destroy');
+        },
+        destroyed: function () {
+            console.log('destroy完成');
+        }
+    })
+
+    new Vue({
+        el: '#container',
+        data: {
+            msg: 'Hello Vue',
+            isShow:true
+        }
+    })
+</script>
+
+</body>
+</html>

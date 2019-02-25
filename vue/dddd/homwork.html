@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="js/vue.js"></script>
+    <title></title>
+    <style>
+        ul{
+            list-style: none;
+            margin: 0;
+            padding:0
+        }
+
+        ul>li{
+            display: inline-block;
+            width: 20%;
+            text-align: center;
+        }
+        .myColor{
+            color:blue
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+
+    <ul>
+        <li v-for="(tmp,index) in pageNumbers">
+            <a  @click="handleClick(index)"
+               v-bind:class="{myColor:index==pageNo}">
+                {{tmp}}
+            </a>
+        </li>
+    </ul>
+</div>
+<script>
+    //Vue是一个实现ui层的js的框架
+    new Vue({
+        el:'#container',
+        data:{
+            pageNumbers:[1,2,3,4,5],
+            pageNo:0//记录的是当前选中的是哪一页
+        },
+        methods:{
+            handleClick: function (myIndex) {
+                //指定当前要选中哪一页
+                this.pageNo = myIndex;
+            }
+        }
+    })
+
+</script>
+
+
+</body>
+</html>
